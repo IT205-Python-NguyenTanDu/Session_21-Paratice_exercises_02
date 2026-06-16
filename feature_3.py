@@ -1,14 +1,16 @@
 import logging
 
+logger = logging.getLogger(__name__)
+
 
 def calculate_total(current_order):
     """Calculate total price of all items in the order.
 
     Args:
-        current_order: list
+        current_order (list): List of order item dicts.
 
     Returns:
-        total: int
+        int: Sum of (price * quantity) for every item.
     """
     total = 0
     for item in current_order:
@@ -20,14 +22,17 @@ def handle_view_order(current_order):
     """Display current order details and total price.
 
     Args:
-        current_order: list
+        current_order (list): List of order item dicts.
     """
     if not current_order:
         print("Giỏ hàng trống, vui lòng chọn món (Chức năng 2).")
         return
 
     print("--- GIỎ HÀNG HIỆN TẠI ---")
-    header = f"{'Mã SP':<6}| {'Tên đồ uống':<20}| {'Đơn giá':<10}| {'Số lượng':<10}| {'Thành tiền'}"
+    header = (
+        f"{'Mã SP':<6}| {'Tên đồ uống':<20}| "
+        f"{'Đơn giá':<10}| {'Số lượng':<10}| {'Thành tiền'}"
+    )
     print(header)
     print("-" * 64)
     for item in current_order:
